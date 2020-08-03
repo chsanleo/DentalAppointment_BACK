@@ -17,7 +17,9 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->string('numExp');
             $table->integer('user_id');
-            $table->string('dateAppointment');
+            $table->dateTime('startTime');
+            $table->dateTime('endTime');
+            $table->string('subject');
             $table->softDeletes('delete_at');
             $table->timestamps();
         });
