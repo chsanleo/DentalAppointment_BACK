@@ -9,7 +9,7 @@ class Appointment extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['numExp', 'user_id', 'dateAppointment'];
+    protected $fillable = ['numExp', 'user_id', 'startTime','endTime','subject'];
 
     public function client()
     {
