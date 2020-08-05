@@ -20,7 +20,7 @@ class CreateAppointmentsTable extends Migration
             $table->dateTime('startTime');
             $table->dateTime('endTime');
             $table->string('subject');
-            $table->softDeletes('delete_at');
+            $table->softDeletes('deleted_at');
             $table->timestamps();
         });
     }
