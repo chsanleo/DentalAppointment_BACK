@@ -13,8 +13,7 @@ class AppointmentController extends Controller
     public function getAll()
     {
         return Appointment::where(
-            ['delete_at', null],
-            ['startTime', '>', Carbon::now()->subWeek(1)]
+            'startTime', '>', Carbon::now()->subWeek(1)
         )->get();
     }
 
