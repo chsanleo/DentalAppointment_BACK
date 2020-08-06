@@ -10,9 +10,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('auth')->group(function () {
-    Route::get('signup', 'AuthController@signup');
+    Route::post('signup', 'AuthController@signup');
     Route::post('login', 'AuthController@login');
 });
+
 //CRUD User
 Route::prefix('user')->group(function () {
     Route::get('{id}', 'UserController@getProfile');
@@ -37,6 +38,7 @@ Route::prefix('appointment')->group(function () {
     Route::delete('{id}', 'AppointmentController@deleteAppointment');
 });
 
+//contact Mail
 Route::prefix('contact')->group(function(){
     Route::get('','ContactMailController@getAll');
     Route::get('{id}','ContactMailController@get');

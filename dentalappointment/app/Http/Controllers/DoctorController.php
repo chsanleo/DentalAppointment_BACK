@@ -12,8 +12,8 @@ class DoctorController extends Controller
     public function getProfile($id)
     {
         return User::where(
-            [ 'id',$id],
-            [ 'type','doctor']
+            ['id', $id],
+            ['type', 'doctor']
         );
     }
     //Route::post('', 'DoctorController@createDoctor');
@@ -23,10 +23,10 @@ class DoctorController extends Controller
         $body = $request->all();
         $validator = $this->doctorValidator($body);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(['message' => 'There was a problem trying to update the user'], 400);
         }
-        
+
         return User::create($body);
     }
     //Route::put('{id}', 'DoctorController@updateDoctor');
@@ -35,7 +35,7 @@ class DoctorController extends Controller
         $request->type = 'doctor';
         $body = $request->all();
         $validator = $this->doctorValidator($body);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(['message' => 'There was a problem trying to update the user'], 400);
         }
         $user = User::find($id);
@@ -49,12 +49,13 @@ class DoctorController extends Controller
         return response()->json(['message' => 'Doctor deleted']);
     }
 
-    private function doctorValidator($body){
-        return Validator::make($body,[
+    private function doctorValidator($body)
+    {
+        return Validator::make($body, [
             'name' => 'required|string',
             'address' => 'string|max:255',
             'numExp' => 'required|string',
-            'email'=> 'required|string',
+            'email' => 'required|string',
             'password' => 'required|string'
         ]);
     }
