@@ -41,5 +41,5 @@ Route::prefix('contact')->group(function(){
     Route::get('','ContactMailController@getAll');
     Route::get('{id}','ContactMailController@get');
     Route::post('','ContactMailController@createContactMail');
-    Route::get('{id}', 'AppointmentController@update');
+    Route::get('update/{id}', 'AppointmentController@update');
 });
