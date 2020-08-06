@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,7 +12,10 @@ class ClientController extends Controller
     //Route::get('{id}', 'UserController@getProfile');
     public function getProfile($id)
     {
-        return User::find($id);
+        return User::where(
+            [ 'id',$id],
+            [ 'type','client']
+        );
     }
 
     //Route::put('{id}', 'UserController@updateUser');
