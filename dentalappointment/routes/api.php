@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactMailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,11 @@ Route::prefix('appointment')->group(function () {
     Route::post('', 'AppointmentController@createAppointment');
     Route::put('{id}', 'AppointmentController@updateAppointment');
     Route::delete('{id}', 'AppointmentController@deleteAppointment');
+});
+
+Route::prefix('contact')->group(function(){
+    Route::get('','ContactMailController@getAll');
+    Route::get('{id}','ContactMailController@get');
+    Route::post('','ContactMailController@createContactMail');
+    Route::get('{id}', 'AppointmentController@update');
 });
