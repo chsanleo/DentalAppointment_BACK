@@ -67,8 +67,8 @@ class AppointmentController extends Controller
         return Validator::make($body, [
             'numExp' => 'required|string',
             'user_id' => 'required|integer',
-            'startTime' => 'required|',//
-            'endTime' => 'required|after:startTime'//
+            'startTime' => 'required|date',//
+            'endTime' => 'required|after:startTime|date'//
         ]);
     }
 }
