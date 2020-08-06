@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\contactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ContactMailController extends Controller
@@ -23,6 +24,7 @@ class ContactMailController extends Controller
     public function createContactMail(Request $request, $id)
     {
         $body = $request->all();
+        $body['user_id'] = Auth::id();
         $validator = Validator::make($request->all(), [
             'contactMail' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
