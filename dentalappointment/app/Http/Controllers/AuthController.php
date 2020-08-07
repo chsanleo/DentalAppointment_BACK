@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SignUp;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -21,8 +23,8 @@ class AuthController extends Controller
         $numExp = 'VLC-' . $ramdomNum;
 
         $password = $this->ramdomNum();
-        //enviar mail
-        
+        Mail::to($email)->send(new SignUp($numExp, $password));
+
         return User::create([
             "name" => "", "surname" => "", "numExp" => $numExp, "password" => $password,
             "email" => $email, "address" => ""
