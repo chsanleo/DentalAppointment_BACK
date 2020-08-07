@@ -8,14 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
-    //Route::get('{id}', 'DoctorController@getProfile');
-    public function getProfile($id)
-    {
-        return User::where(
-            ['id', $id],
-            ['type', 'doctor']
-        );
-    }
     //Route::post('', 'DoctorController@createDoctor');
     public function createDoctor(Request $request, $id)
     {
