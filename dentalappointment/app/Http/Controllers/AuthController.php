@@ -58,4 +58,22 @@ class AuthController extends Controller
             'mensaje' => 'User successfully logged out'
         ]);
     }
+    public function forgotPass(Request $request)
+    {
+        $email = $request->input('email');
+        $numExp = $request->input('numExpedient');
+        $user = User::where(
+            ['email', $email],
+            ['numExp', $numExp]
+        )->first();
+
+        if (!isset($user->numExp)) {
+            return;
+        }
+        $password = $this->ramdomNum();
+        $user->password = $password;
+
+        Mail::to($email)->send(new SignUp($numExp, $password));
+        return $user::update();
+    }
 }
