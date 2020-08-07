@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ContactMailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +22,6 @@ Route::prefix('user')->group(function () {
 
 //CRUD MEDICOS
 Route::prefix('doctor')->group(function () {
-    Route::get('{id}', 'DoctorController@getProfile');
     Route::post('', 'DoctorController@createDoctor');
     Route::put('{id}', 'DoctorController@updateDoctor');
     Route::delete('{id}', 'DoctorController@deleteDoctor');
