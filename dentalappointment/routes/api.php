@@ -11,6 +11,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('auth')->group(function () {
     Route::post('signup', 'AuthController@signup');
     Route::post('login', 'AuthController@login');
+    Route::post('forgot','AuthController@forgotPass');
 });
 
 //CRUD User
