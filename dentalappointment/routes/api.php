@@ -17,7 +17,7 @@ Route::prefix('auth')->group(function () {
 //CRUD User
 Route::prefix('user')->group(function () {
     Route::get('{id}', 'UserController@getProfile');
-    Route::put('{id}', 'UserController@updateUser');
+    Route::put('', 'UserController@updateUser');
     Route::delete('{id}', 'UserController@deleteUser');
 });
 
