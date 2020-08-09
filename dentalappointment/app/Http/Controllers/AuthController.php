@@ -19,8 +19,12 @@ class AuthController extends Controller
             return;
         }
 
-        $ramdomNum = $this->ramdomNum();
-        $numExp = 'VLC-' . $ramdomNum;
+        do {
+            $ramdomNum = $this->ramdomNum();
+            $numExp = 'VLC-' . $ramdomNum;
+            $user = User::where('numExp', $numExp);
+        } while (!isset($user));
+
 
         $password = $this->ramdomNum();
         Mail::to($email)->send(new SignUp($numExp, $password));
