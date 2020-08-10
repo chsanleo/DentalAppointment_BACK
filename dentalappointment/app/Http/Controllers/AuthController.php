@@ -6,6 +6,7 @@ use App\Mail\SignUp;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
@@ -25,11 +26,12 @@ class AuthController extends Controller
             $user = User::where('numExp', $numExp);
         } while (!isset($user));
 
-
         $password = $this->ramdomNum();
         Mail::to($email)->send(new SignUp($numExp, $password));
 
-        return User::create([
+        $password = Hash::make($password);
+
+        User::create([
             "name" => "", "surname" => "", "numExp" => $numExp, "password" => $password,
             "email" => $email, "address" => ""
         ]);
@@ -55,6 +57,7 @@ class AuthController extends Controller
         $token = $user->createToken('authToken')->accessToken;
         return response()->json(['token' => $token, 'user' => $user], 200);
     }
+
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
@@ -75,6 +78,7 @@ class AuthController extends Controller
             return;
         }
         $password = $this->ramdomNum();
+        $password = Hash::make($password);
         $user->password = $password;
 
         Mail::to($email)->send(new SignUp($numExp, $password));
