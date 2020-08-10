@@ -16,9 +16,9 @@ Route::prefix('auth')->group(function () {
 
 //CRUD User
 Route::prefix('user')->group(function () {
-    Route::get('{id}', 'UserController@getProfile');
-    Route::put('', 'UserController@updateUser');
-    Route::delete('{id}', 'UserController@deleteUser');
+    Route::get('{id}', 'ClientController@getProfile');
+    Route::post('', 'ClientController@updateUser');
+    Route::delete('{id}', 'ClientController@deleteUser');
 });
 
 //CRUD MEDICOS
