@@ -31,9 +31,11 @@ Route::prefix('doctor')->group(function () {
 //CITAS
 Route::prefix('appointment')->group(function () {
     Route::get('', 'AppointmentController@getAll');
+    Route::get('choose', 'AppointmentController@getAllFree');
     Route::get('{id}', 'AppointmentController@get');
+    Route::post('user', 'AppointmentController@getbyUser');
     Route::post('', 'AppointmentController@createAppointment');
-    Route::put('{id}', 'AppointmentController@updateAppointment');
+    Route::post('update', 'AppointmentController@updateAppointment');
     Route::delete('{id}', 'AppointmentController@deleteAppointment');
 });
 
