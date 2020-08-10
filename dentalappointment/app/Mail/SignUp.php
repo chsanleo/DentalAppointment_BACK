@@ -10,8 +10,8 @@ class SignUp extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $password;
-    private $numExp;
+    public $password;
+    public $numExp;
     /**
      * Create a new message instance.
      *
@@ -20,7 +20,7 @@ class SignUp extends Mailable
     public function __construct($numExp, $password)
     {
         $this->password = $password;
-        $this->$numExp = $numExp;
+        $this->numExp = $numExp;
     }
 
     /**
