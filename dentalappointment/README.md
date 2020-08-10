@@ -1,4 +1,4 @@
-# Backend, FlightSearch
+# Backend, DentalAppointment
 ![badge](https://img.shields.io/badge/working-active-brig)
 
 Backend proposed as an exercise to work with Laravel PHP and React connected together using API. Also have a database where we storage the information about the correct behaviour of the application. In this application we need to complete the necessary methods to manage the users and manage appointments.
