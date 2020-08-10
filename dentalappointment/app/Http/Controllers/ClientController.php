@@ -21,6 +21,7 @@ class ClientController extends Controller
         $body = $request->all();
         $validator = Validator::make($body, [
             'name' => 'required|string',
+            'surname' => 'required|string',
             'address' => 'string|max:255',
             'numExp' => 'required|string',
             'email' => 'required|string',
