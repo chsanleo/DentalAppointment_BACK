@@ -1,1 +1,1 @@
-Your expedient is {{$numExp}}and your pass is {{$password}}
+Your expedient is {{$numExp}} and your pass is {{$password}}
